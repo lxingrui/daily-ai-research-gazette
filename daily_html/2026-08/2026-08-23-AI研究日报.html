@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
+    <title>Daily AI Research Gazette — 2026-08-23</title>
+    <link rel="stylesheet" href="../../assets/report.css">
+</head>
+
+<body style="--figure-max-height: 450px">
+    <main class="page">
+        <div class="utility-bar"><span>Personal Research Edition</span><span>LLM Systems · Agents ·
+                Theory</span><span>Sunday, 23 August 2026</span></div>
+        <header class="masthead">
+            <h1>Daily AI Research Gazette</h1>
+            <p>LLM Systems, Efficient Sequence Models, Agents &amp; Theory</p>
+        </header>
+        <div class="focus-strip">
+            <div><strong>今日焦点 · Transformer 工程部署改进</strong><br>Engineering &amp; Deployment</div>
+            <div><span class="strip-label">今日视角</span><br><b>底层理论与第一性原理</b><br>Theory &amp; First Principles</div>
+            <div><b>4</b> 精选 / <b>4</b> 候选<br><b>3</b> 知名 / <b>3</b> 经典</div>
+            <div>日级自主选文不可用（fallback_invalid_daily_json），已回退到稳定的规则选文与逐篇精编。</div>
+        </div>
+<details class="query-strip">
+            <summary>Today's Search Query · 今日检索式</summary>
+            <code>(cat:cs.CL OR cat:cs.LG OR cat:cs.AI OR cat:cs.DC OR cat:cs.PF) AND (ti:&#34;KV cache&#34; OR abs:&#34;KV cache&#34; OR ti:&#34;paged attention&#34; OR abs:&#34;paged attention&#34; OR ti:&#34;FlashAttention&#34; OR abs:&#34;FlashAttention&#34; OR ti:&#34;quantization&#34; OR abs:&#34;quantization&#34; OR ti:&#34;speculative decoding&#34; OR abs:&#34;speculative decoding&#34; OR ti:&#34;inference acceleration&#34; OR abs:&#34;inference acceleration&#34; OR ti:&#34;LLM serving&#34; OR abs:&#34;LLM serving&#34; OR ti:&#34;vLLM&#34; OR abs:&#34;vLLM&#34; OR ti:&#34;TensorRT-LLM&#34; OR abs:&#34;TensorRT-LLM&#34; OR ti:&#34;continuous batching&#34; OR abs:&#34;continuous batching&#34; OR ti:&#34;mixture of experts serving&#34; OR abs:&#34;mixture of experts serving&#34; OR ti:&#34;model compression&#34; OR abs:&#34;model compression&#34;) AND submittedDate:[202608210000 TO 202608240000]</code>
+        </details><div class="section-kicker">Lead Story · 今日头条</div>
+        <article class="hero no-figure">
+            <div class="hero-copy">
+                <div class="eyebrow">Engineering &amp; Deployment · Breakthrough Headline</div>
+                <h2>大模型服务的内存瓶颈，分页技术给出新解</h2>
+                <p class="dek">发表于第二十九届操作系统原理研讨会的研究提出 PagedAttention 与 vLLM，以分页方式管理大模型推理中的 KV 缓存，并报告在相同延迟水平下实现 2—4 倍吞吐提升。</p>
+                <div class="tags"><span class="tag breakthrough">重大突破</span><span class="tag historical">经典知名论文</span><span class="tag">Paged Attention</span><span class="tag">KV Cache</span><span class="tag">Serving</span><span class="tag">Inference Acceleration</span></div>
+                <div class="meta-line">引用 1391 · 创新度 9.0/10 ·
+                    综合优先级 12.541</div>
+                <div class="analysis-grid">
+                    <section>
+                        <h4>背景与痛点</h4>
+                        <p>大语言模型在线服务往往需要同时处理足够多的请求，才能获得较高吞吐；但每个请求都要维护随生成过程动态增长、收缩的键值缓存（KV cache）。传统管理方式容易造成内存碎片，并在不同请求间重复保存内容；缓存占用还会随序列长度和并发变化，使系统难以稳定扩大批处理规模。于是，有限内存既被动态分配牵制，也被重复数据占用，硬件容量难以直接转化为更多并发请求，服务系统必须在吞吐、延迟和内存利用率之间作出取舍。</p>
+                    </section>
+                    <section>
+                        <h4>核心创新</h4>
+                        <ul><li>PagedAttention借鉴操作系统的虚拟内存和分页技术，将注意力计算所需的KV缓存按页组织，以应对缓存随请求动态变化的需求。</li><li>研究在此基础上构建vLLM服务系统，目标是实现KV缓存近乎零浪费的内存管理，把算法设计落到大模型服务的批处理场景。</li><li>系统支持在单个请求内部及不同请求之间灵活共享KV缓存，减少重复存储，从而进一步降低整体内存使用。</li></ul>
+                    </section>
+                    <section>
+                        <h4>实验结论</h4>
+                        <p>评测显示，在相同延迟水平下，vLLM相较FasterTransformer、Orca等当时的先进系统，可将流行大模型的服务吞吐提升2至4倍。收益并非固定不变：序列越长、模型越大，或解码算法越复杂，优势越明显。摘要没有进一步列出统一比较所用的硬件、模型和工作负载配置，因此这组结果适合被理解为论文评测条件下的系统性收益，而不应直接外推为所有部署环境的保证。</p>
+                    </section>
+                    <section>
+                        <h4>论文信息</h4>
+                        <p>Woosuk Kwon、Z. Li、Siyuan Zhuang、Ying Sheng、L Zheng、Cody Hao Yu、Joseph E. Gonzalez、Hao Zhang、Ion Stoica</p>
+                        <p>Proceedings of the 29th Symposium on Operating Systems Principles</p>
+                    </section>
+                </div>
+                <div class="read-links"><a href="https://doi.org/10.1145/3600006.3613165" target="_blank" rel="noopener">Abstract
+                        ↗</a><a href="https://dl.acm.org/doi/pdf/10.1145/3600006.3613165" target="_blank" rel="noopener">PDF ↗</a></div>
+                <div class="byline">Original title: Efficient Memory Management for Large Language Model Serving with PagedAttention</div>
+            </div>
+        </article><div class="section-kicker">Major Features · 重点论文</div>
+        <section class="feature-grid"><article
+                class="feature no-figure">
+                <div class="feature-copy">
+                    <div class="eyebrow">State Space Models &amp; Mamba</div>
+                    <h3>Mamba：选择性状态空间模型瞄准 Transformer 的长序列瓶颈</h3>
+                    <div class="tags"><span class="tag historical">经典知名论文</span><span class="tag">Mamba</span><span class="tag">SSM</span><span class="tag">Inference Acceleration</span><span class="tag">Long Context</span>                    </div>
+                    <p class="dek">论文提出 Mamba：让状态空间参数随输入变化，在保留线性序列扩展性的同时提升离散语言建模能力，并以硬件感知算法支持高效计算。</p>
+                    <div class="feature-analysis">
+                        <section>
+                            <h4>问题背景</h4>
+                            <p>Transformer 凭借注意力机制主导基础模型，但注意力在长序列上的计算效率受限，推高了长文本等场景的成本。线性注意力、门控卷积、循环模型和结构化状态空间模型（SSM）都在寻求次二次复杂度，却长期难以在语言等关键离散模态上达到注意力的表现。论文将症结指向内容依赖推理能力不足：这类模型往往难以依据当前输入决定信息应被保留还是遗忘。</p>
+                        </section>
+                        <section>
+                            <h4>方法与贡献</h4>
+                            <ul><li>使 SSM 参数成为输入的函数，让模型可按当前 token 选择性地沿序列传播或遗忘信息。</li><li>针对选择性机制无法继续使用高效卷积的问题，设计硬件感知的递归模式并行算法。</li><li>将选择性 SSM 整合为简化的端到端 Mamba 架构，移除注意力模块与 MLP 模块。</li></ul>
+                        </section>
+                        <section class="wide">
+                            <h4>实验与结论</h4>
+                            <p>论文称，Mamba 推理吞吐量可达到 Transformer 的 5 倍，并随序列长度呈线性扩展；在真实数据上，性能可持续提升至百万长度序列。作为通用序列模型骨干，它在语言、音频和基因组学等多种模态取得当时最优表现。语言建模中，Mamba-3B 超过同规模 Transformer，并在预训练和下游评测中追平两倍规模模型。</p>
+                        </section>
+                    </div>
+                    <div class="meta-line">引用 1045 · 创新度 7.45/10
+                    </div>
+                    <div class="read-links"><a href="http://arxiv.org/abs/2312.00752" target="_blank" rel="noopener">Abstract
+                            ↗</a><a href="https://arxiv.org/pdf/2312.00752" target="_blank" rel="noopener">PDF ↗</a></div>
+                    <div class="original-title">Mamba: Linear-Time Sequence Modeling with Selective State Spaces</div>
+                </div>
+            </article></section><div class="section-kicker">Research Briefs · 论文快讯</div>
+        <section class="briefs-grid"><article class="brief">
+                <div class="eyebrow">Engineering &amp; Deployment</div>
+                <h3>均一化钙钛矿电池的垂直阳离子分布</h3>
+                <div class="tags"><span class="tag historical">经典知名论文</span></div><ul><li>研究可视化了钙钛矿薄膜沿垂直方向的组分不均一性，并分析其成因及对器件的潜在影响。
+                    </li><li>引入1-(苯磺酰基)吡咯均一化阳离子分布；所得p–i–n器件获25.2%的认证稳态光电转换效率，并具耐久稳定性。
+                    </li></ul><div class="meta-line">引用 786 · 创新度 5.5/10 · Nature</div>
+                <div class="read-links"><a href="https://doi.org/10.1038/s41586-023-06784-0" target="_blank" rel="noopener">Read ↗</a>
+                </div>
+                <div class="original-title">Homogenizing out-of-plane cation composition in perovskite solar cells</div>
+            </article><article class="brief">
+                <div class="eyebrow">Engineering &amp; Deployment</div>
+                <h3>废弃PET有望转化为化学品与氢燃料</h3>
+                <div class="tags"><span class="tag historical">经典知名论文</span></div><ul><li>在膜电极组件反应器中，CoNi0.25P催化剂实现500 mA cm⁻²电流密度，电压为1.8 V。
+                    </li><li>乙二醇氧化制甲酸盐的法拉第效率和选择性均超过80%。
+                    </li><li>初步技术经济分析认为，在高电流密度下，该工艺可能具备盈利性；催化剂运行中原位转变为低结晶度金属氧（氢）化物。
+                    </li></ul><div class="meta-line">引用 760 · 创新度 5.5/10 · Nature Communications</div>
+                <div class="read-links"><a href="https://doi.org/10.1038/s41467-021-25048-x" target="_blank" rel="noopener">Read ↗</a>
+                </div>
+                <div class="original-title">Electrocatalytic upcycling of polyethylene terephthalate to commodity chemicals and H2 fuel</div>
+            </article></section>        <footer><span>Sources: arXiv · OpenAlex · Semantic Scholar · NeurIPS official proceedings. Oral/Spotlight labels
+                appear
+                only when officially verified.</span><span>Generated 2026-08-23 00:38 UTC</span></footer>
+    </main>
+</body>
+
+</html>
