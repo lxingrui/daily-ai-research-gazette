@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
+    <title>Daily AI Research Gazette — 2026-08-25</title>
+    <link rel="stylesheet" href="../../assets/report.css">
+</head>
+
+<body style="--figure-max-height: 450px">
+    <main class="page">
+        <div class="utility-bar"><span>Personal Research Edition</span><span>LLM Systems · Agents ·
+                Theory</span><span>Tuesday, 25 August 2026</span></div>
+        <header class="masthead">
+            <h1>Daily AI Research Gazette</h1>
+            <p>LLM Systems, Efficient Sequence Models, Agents &amp; Theory</p>
+        </header>
+        <div class="focus-strip">
+            <div><strong>今日焦点 · CoT 与 Agent 实现</strong><br>CoT &amp; Agentic AI</div>
+            <div><span class="strip-label">今日视角</span><br><b>评测可信度与实验方法学</b><br>Evaluation Methodology</div>
+            <div><b>7</b> 精选 / <b>12</b> 候选<br><b>1</b> 知名 / <b>1</b> 经典</div>
+            <div>日级自主选文不可用（fallback_daily_api_failure），已回退到稳定的规则选文与逐篇精编。</div>
+        </div>
+<details class="query-strip">
+            <summary>Today's Search Query · 今日检索式</summary>
+            <code>(cat:cs.CL OR cat:cs.AI OR cat:cs.LG OR cat:cs.MA OR cat:cs.SE) AND (ti:&#34;chain of thought&#34; OR abs:&#34;chain of thought&#34; OR ti:&#34;reasoning model&#34; OR abs:&#34;reasoning model&#34; OR ti:&#34;test-time reasoning&#34; OR abs:&#34;test-time reasoning&#34; OR ti:&#34;agentic workflow&#34; OR abs:&#34;agentic workflow&#34; OR ti:&#34;AI agent&#34; OR abs:&#34;AI agent&#34; OR ti:&#34;tool use&#34; OR abs:&#34;tool use&#34; OR ti:&#34;tool calling&#34; OR abs:&#34;tool calling&#34; OR ti:&#34;multi-agent&#34; OR abs:&#34;multi-agent&#34; OR ti:&#34;planning&#34; OR abs:&#34;planning&#34; OR ti:&#34;agent memory&#34; OR abs:&#34;agent memory&#34; OR ti:&#34;computer use agent&#34; OR abs:&#34;computer use agent&#34; OR ti:&#34;reasoning trace&#34; OR abs:&#34;reasoning trace&#34;) AND submittedDate:[202608230000 TO 202608260000]</code>
+        </details><div class="section-kicker">Lead Story · 今日头条</div>
+        <article class="hero no-figure">
+            <div class="hero-copy">
+                <div class="eyebrow">CoT &amp; Agentic AI</div>
+                <h2>分数布朗运动：理解长记忆随机性的数学框架</h2>
+                <p class="dek">这篇由 Benoit B. Mandelbrot 与 John W. Van Ness 合作的 SIAM Review 论文，围绕分数布朗运动与分数噪声展开，并将相关问题延伸至具有长期依赖、尺度变化和随机波动的应用场景。</p>
+                <div class="tags"><span class="tag historical">经典知名论文</span><span class="tag">Planning</span></div>
+                <div class="meta-line">引用 7753 · 创新度 6.8/10 ·
+                    综合优先级 9.624</div>
+                <div class="analysis-grid">
+                    <section>
+                        <h4>背景与痛点</h4>
+                        <p>传统布朗运动及白噪声模型便于分析，却未必能描述现实序列中跨时间尺度持续存在的相关性。该文关注的痛点，正是如何在随机过程框架内表达这类非局部记忆与尺度结构，并区分运动本身和由其增量形成的噪声。由于页面展示的是题录、参考文献和后续引用信息，而非论文摘要或全文，本文具体应用对象、参数设定及论证边界不能据此擅自补写。这也解释了它为何同时出现在概率论、信号、经济与地球物理相关文献的引用链中，但这里仅作页面所示范围内的概括。</p>
+                    </section>
+                    <section>
+                        <h4>核心创新</h4>
+                        <ul><li>以分数布朗运动为核心对象，讨论其与分数噪声之间的关系，为描述非标准随机波动提供共同框架。</li><li>把长期依赖与尺度结构放入同一随机过程问题中，突出传统短记忆模型难以覆盖的分析维度。</li><li>题名明确将理论对象与应用并列，显示论文试图把抽象过程、噪声表示和实际问题置于同一讨论脉络。</li></ul>
+                    </section>
+                    <section>
+                        <h4>实验结论</h4>
+                        <p>现有页面没有展示摘要、定理、图表、数值实验或应用案例的具体内容，只有题名、作者、DOI、参考文献及引用记录。因此，无法严谨判断论文给出了哪些定量结果、在哪些数据上验证模型，或不同参数下表现如何。能够确认的仅是：该文将 fractional Brownian motions 与 fractional noises 并置讨论，并明确包含 applications；任何关于预测精度、拟合优势或工程收益的结论，都需要回到原文后再写入报道。</p>
+                    </section>
+                    <section>
+                        <h4>论文信息</h4>
+                        <p>Benoît B. Mandelbrot、John W. Van Ness</p>
+                        <p>SIAM Review</p>
+                    </section>
+                </div>
+                <div class="read-links"><a href="https://doi.org/10.1137/1010093" target="_blank" rel="noopener">Abstract
+                        ↗</a><a href="None" target="_blank" rel="noopener">PDF ↗</a></div>
+                <div class="byline">Original title: Fractional Brownian Motions, Fractional Noises and Applications</div>
+            </div>
+        </article><div class="section-kicker">Research Briefs · 论文快讯</div>
+        <section class="briefs-grid"><article class="brief">
+                <div class="eyebrow">CoT &amp; Agentic AI</div>
+                <h3>让长程智能体记住真正重要的信息</h3>
+                <div class="tags"><span class="tag">Agent Memory</span></div><ul><li>• 将执行过程组织为任务、子任务与动作，并为每条记忆分配动态保留分数。
+                    </li><li>• 通过事件更新与选择性衰减折叠已完成轨迹、抑制低效内容，同时保留对历史上下文的访问。
+                    </li><li>• 在GAIA-Text测试中，相较线性记忆平均提升9.97个百分点，提示词令牌使用量下降32.8%。
+                    </li></ul><div class="meta-line">引用 0 · 创新度 8.0/10 · cs.AI</div>
+                <div class="read-links"><a href="https://arxiv.org/abs/2608.20631" target="_blank" rel="noopener">Read ↗</a>
+                </div>
+                <div class="original-title">Weighted Memory Tree: Remembering What Matters for Long-Horizon LLM Agents</div>
+            </article><article class="brief">
+                <div class="eyebrow">CoT &amp; Agentic AI</div>
+                <h3>持久记忆中毒：内容筛查与来源排序的边界</h3>
+                <div class="tags"><span class="tag">Agent Memory</span></div><ul><li>在LongMemEval语料中，仅注入1.2%的虚假记忆，准确率便由0.850降至0.300。
+                    </li><li>即使间接提示注入筛查召回率达0.832，仍未拦截360条中毒记忆中的任何一条。
+                    </li><li>来源加权在不受信内容多为良性时可提升准确率，但会压制同样不受信的答案证据；论文主张采用检索时占用约束。
+                    </li></ul><div class="meta-line">引用 0 · 创新度 8.0/10 · cs.AI, cs.CR</div>
+                <div class="read-links"><a href="https://arxiv.org/abs/2608.21230" target="_blank" rel="noopener">Read ↗</a>
+                </div>
+                <div class="original-title">Utility Under Attack: Agent Memory Poisoning and the Limits of Content Screening and Provenance Ranking</div>
+            </article><article class="brief">
+                <div class="eyebrow">CoT &amp; Agentic AI</div>
+                <h3>多智能体协作，先校准再交流</h3>
+                <div class="tags"><span class="tag">Multi-Agent</span><span class="tag">Reasoning</span></div><ul><li>框架压缩讨论状态，跟踪不确定性、分歧、证据增益、冗余与过早共识，并选择质询、澄清、取证或路由。
+                    </li><li>在HiddenBench式任务及12个开源与闭源权重模型上，准确率和通信效率优于固定或无结构讨论，部分情况下超过全信息基线。
+                    </li></ul><div class="meta-line">引用 0 · 创新度 8.0/10 · cs.AI</div>
+                <div class="read-links"><a href="https://arxiv.org/abs/2608.20564" target="_blank" rel="noopener">Read ↗</a>
+                </div>
+                <div class="original-title">Consilience: Conformally Calibrated Communication Control for Hidden-Profile Multi-Agent Reasoning</div>
+            </article><article class="brief">
+                <div class="eyebrow">CoT &amp; Agentic AI</div>
+                <h3>命令行智能体：从终局结果走向过程能力</h3>
+                <div class="tags"><span class="tag">Tool Use</span></div><ul><li>将终端命令执行、文本反馈与有状态环境交互置于统一框架，提出七维终端能力画像。
+                    </li><li>诊断显示，不同基准暴露的过程信号并不相同；匹配比较也表明，性能与组件归因受基准条件影响。
+                    </li><li>综述建议报告系统与运行时条件，并以可回放轨迹和过程证据补足只看终局结果的评测。
+                    </li></ul><div class="meta-line">引用 0 · 创新度 6.0/10 · cs.AI, cs.SE</div>
+                <div class="read-links"><a href="https://arxiv.org/abs/2608.20485" target="_blank" rel="noopener">Read ↗</a>
+                </div>
+                <div class="original-title">Terminal Agents: A Survey of AI Agents in Command-Line Environments</div>
+            </article><article class="brief">
+                <div class="eyebrow">CoT &amp; Agentic AI</div>
+                <h3>让多智能体追问论文未说出口的局限</h3>
+                <div class="tags"><span class="tag">Multi-Agent</span><span class="tag">Reasoning</span></div><ul><li>• 框架为不同怀疑者设定类别化分析视角，以证据为基础展开并行辩论，筛选论文未明示的局限性。
+                    </li><li>• 在包含414篇论文、1,905条未明示局限的ToC-Bench上，相较最强基线，精确率提升79%，覆盖率提升11%。
+                    </li></ul><div class="meta-line">引用 0 · 创新度 7.0/10 · cs.CL</div>
+                <div class="read-links"><a href="https://arxiv.org/abs/2608.20777" target="_blank" rel="noopener">Read ↗</a>
+                </div>
+                <div class="original-title">Tree-of-Concerns: Hierarchical Multi-Agent Debate for Unstated-Limitation Extraction in Scientific Critique</div>
+            </article><article class="brief">
+                <div class="eyebrow">Engineering &amp; Deployment</div>
+                <h3>让思维链成为推理加速器</h3>
+                <div class="tags"><span class="tag">Speculative Decoding</span><span class="tag">Inference Acceleration</span><span class="tag">Chain-of-Thought</span><span class="tag">Reasoning</span></div><ul><li>SSR以部分思维链答案分布充当草稿器，以完整思维链分布作为验证器，在同一模型内部完成推测与校验。
+                    </li><li>方法利用部分回答与完整回答的语义、词汇重叠，一次接受更长草稿前缀，并借助后缀缓存找回前缀之外的有效片段。
+                    </li><li>在结构化和长文本生成任务上，论文报告主流开源模型总生成延迟最高相对改善24.1%。
+                    </li></ul><div class="meta-line">引用 0 · 创新度 7.0/10 · cs.CL</div>
+                <div class="read-links"><a href="https://arxiv.org/abs/2608.20359" target="_blank" rel="noopener">Read ↗</a>
+                </div>
+                <div class="original-title">Self-Speculation for Faster Reasoning Models</div>
+            </article></section>        <footer><span>Sources: arXiv · OpenAlex · Semantic Scholar · NeurIPS official proceedings. Oral/Spotlight labels
+                appear
+                only when officially verified.</span><span>Generated 2026-08-25 00:42 UTC</span></footer>
+    </main>
+</body>
+
+</html>
