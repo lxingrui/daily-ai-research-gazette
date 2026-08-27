@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
+    <title>Daily AI Research Gazette — 2026-08-27</title>
+    <link rel="stylesheet" href="../../assets/report.css">
+</head>
+
+<body style="--figure-max-height: 450px">
+    <main class="page">
+        <div class="utility-bar"><span>Personal Research Edition</span><span>LLM Systems · Agents ·
+                Theory</span><span>Thursday, 27 August 2026</span></div>
+        <header class="masthead">
+            <h1>Daily AI Research Gazette</h1>
+            <p>LLM Systems, Efficient Sequence Models, Agents &amp; Theory</p>
+        </header>
+        <div class="focus-strip">
+            <div><strong>今日焦点 · 状态空间模型与 Mamba</strong><br>State Space Models &amp; Mamba</div>
+            <div><span class="strip-label">今日视角</span><br><b>反例、失效模式与适用边界</b><br>Failures &amp; Counterexamples</div>
+            <div><b>3</b> 精选 / <b>12</b> 候选<br><b>1</b> 知名 / <b>1</b> 经典</div>
+            <div>模型按质量自主精选 3 篇，并执行动态篇幅控制。</div>
+        </div>
+<details class="query-strip">
+            <summary>Today's Search Query · 今日检索式</summary>
+            <code>(cat:cs.CL OR cat:cs.LG OR cat:cs.AI OR cat:stat.ML) AND (ti:&#34;Mamba&#34; OR abs:&#34;Mamba&#34; OR ti:&#34;state space model&#34; OR abs:&#34;state space model&#34; OR ti:&#34;structured state space&#34; OR abs:&#34;structured state space&#34; OR ti:&#34;selective state space&#34; OR abs:&#34;selective state space&#34; OR ti:&#34;S4&#34; OR abs:&#34;S4&#34; OR ti:&#34;state space duality&#34; OR abs:&#34;state space duality&#34; OR ti:&#34;state space language model&#34; OR abs:&#34;state space language model&#34;) AND submittedDate:[202608250000 TO 202608280000]</code>
+        </details><div class="section-kicker">Lead Story · 今日头条</div>
+        <article class="hero no-figure">
+            <div class="hero-copy">
+                <div class="eyebrow">State Space Models &amp; Mamba</div>
+                <h2>严格因果并未自动带来准确：流式 SSM 的响应机制与精度缺口</h2>
+                <p class="dek">这项视频异常检测工作把“无前视、无窗口缓冲”的流式约束落实为固定状态递推，并直接测量边缘端延迟；但其初始配置的准确率落后于既有非因果 SSM 基线，且门控收益随数据规模改变，构成对“SSM 天然兼顾实时性与性能”叙事的明确限缩。</p>
+                <div class="tags"><span class="tag">Mamba</span><span class="tag">SSM</span></div>
+                <div class="meta-line">引用 0 · 创新度 6.0/10 ·
+                    综合优先级 7.95</div>
+                <div class="analysis-grid">
+                    <section>
+                        <h4>背景与痛点</h4>
+                        <p>已有将 Mamba 风格状态空间模型用于视频异常检测的工作，仍可能在内部缓冲片段或时间窗口，因此无法保证严格因果；同时，时间记忆与检测延迟的关系缺少理论说明，效率也常仅以 GPU 吞吐衡量。对首次接触状态空间模型而言，本文将其序列记忆具体化为固定大小的递推状态：每帧更新不依赖未来帧，因而能把流式响应、可捕获事件长度与状态衰减放到同一分析框架中。</p>
+                    </section>
+                    <section>
+                        <h4>核心创新</h4>
+                        <ul><li>构建严格因果的流式检测器：每个输入帧以固定大小状态更新，单帧时间与内存复杂度均为 O(1)，不使用前视或片段缓冲。其时间核心是带输入和状态相关衰减门的对角线性状态空间递推，并以冻结视觉骨干上的因果下一嵌入预测进行自监督训练。</li><li>推导递推衰减谱与检测延迟、可可靠捕获的最短异常之间的闭式关系，试图把“记忆长短”从经验超参数转化为可检验的时序约束。</li><li>将评测从模拟 GPU 吞吐扩展到 Apple M3 Pro 的端到端单帧延迟和吞吐，并对衰减率、状态大小和门控进行消融，以拆分速度、响应性和准确率的来源。</li></ul>
+                    </section>
+                    <section>
+                        <h4>实验结论</h4>
+                        <p>在 UCSD Ped2 与 CUHK Avenue 上，学习到的基础衰减给出的稳定延迟界为 57 至 59 帧，却高于实测的 1.6 与 18.4 帧检测延迟；作者据此认为，事件边界门而非基础衰减主导响应性。在 Apple M3 Pro 上，端到端延迟为每帧 0.74 与 0.77 ms，吞吐超过 1300 FPS。代价也清晰存在：未经调优的初始配置在 Ped2 和 Avenue 的帧级 AUC 分别为 67.9% 与 70.2%，低于既有非因果 SSM 基线；门控在训练集较小的 Ped2 损害准确率，却在较大的 Avenue 带来帮助。因而，论文支持其严格因果和边缘效率主张，但不支持把该配置外推为准确率可与非因果方法等价，也尚未覆盖这两个数据集之外的场景。</p>
+                    </section>
+                    <section>
+                        <h4>论文信息</h4>
+                        <p>Yogesh Kumar</p>
+                        <p>cs.AI</p>
+                    </section>
+                </div>
+                <div class="read-links"><a href="http://arxiv.org/abs/2608.24810v1" target="_blank" rel="noopener">Abstract
+                        ↗</a><a href="https://arxiv.org/pdf/2608.24810v1" target="_blank" rel="noopener">PDF ↗</a></div>
+                <div class="byline">Original title: Strictly Causal Streaming Video Anomaly Detection with a Theoretically-Grounded State-Space Core</div>
+            </div>
+        </article><div class="section-kicker">Major Features · 重点论文</div>
+        <section class="feature-grid"><article
+                class="feature no-figure">
+                <div class="feature-copy">
+                    <div class="eyebrow">State Space Models &amp; Mamba</div>
+                    <h3>效率收益没有消除预训练边界：BanglaMamba 的分类对照</h3>
+                    <div class="tags"><span class="tag">Mamba</span><span class="tag">SSM</span>                    </div>
+                    <p class="dek">孟加拉语假新闻检测中的 Mamba 替代方案以吞吐和显存换取接近从零训练 BERT 的表现，却未超过预训练 BanglaBERT，且外部数据集泛化仍由后者占优；该结果将架构效率与语言预训练资源的作用明确分开。</p>
+                    <div class="feature-analysis">
+                        <section>
+                            <h4>问题背景</h4>
+                            <p>长文本分类在资源受限环境中需要控制推理成本，而 Transformer 的二次复杂度使这一问题更突出。本文不是提出新的通用状态空间机制，而是在具体语言分类任务中检验 Mamba 是否能成为 BERT 的高效替代：比较重点应同时看任务内分数、外部数据泛化与部署开销，不能只用单一测试集上的效率指标替代模型能力判断。</p>
+                        </section>
+                        <section>
+                            <h4>方法与贡献</h4>
+                            <ul><li>提出 BanglaMamba，并与预训练 BanglaBERT 及架构配置相近、从头训练的 BERT 在孟加拉语假新闻检测上进行对照。</li><li>除 Macro-F1 外，报告推理吞吐和峰值 GPU 显存，直接检验状态空间模型在资源约束下的实际部署收益。</li><li>加入跨数据集评估，使结论不止依赖同分布测试，并将性能差异与大规模预训练的重要性联系起来。</li></ul>
+                        </section>
+                        <section class="wide">
+                            <h4>实验与结论</h4>
+                            <p>BanglaBERT 的 Macro-F1 为 0.9260，高于 BanglaMamba 的 0.9029；后者与从头训练的 CustomBERT（0.9057）相近。与两种 BERT 模型相比，BanglaMamba 的推理吞吐约高 2.2 倍，峰值 GPU 显存低 49%。但在外部数据集上，BanglaBERT 的泛化更好。故证据支持 Mamba 在该任务中提供计算效率优势，尤其适用于资源受限设置；并不支持其在准确率或跨数据集鲁棒性上普遍优于具备大规模预训练的 Transformer。</p>
+                        </section>
+                    </div>
+                    <div class="meta-line">引用 0 · 创新度 3.0/10
+                    </div>
+                    <div class="read-links"><a href="http://arxiv.org/abs/2608.25190v1" target="_blank" rel="noopener">Abstract
+                            ↗</a><a href="https://arxiv.org/pdf/2608.25190v1" target="_blank" rel="noopener">PDF ↗</a></div>
+                    <div class="original-title">BanglaMamba: Exploring State Space Models for Bangla Fake News Detection</div>
+                </div>
+            </article></section><div class="section-kicker">Research Briefs · 论文快讯</div>
+        <section class="briefs-grid"><article class="brief">
+                <div class="eyebrow">State Space Models &amp; Mamba</div>
+                <h3>检索标签错配提醒：AlphaFold 3 不构成 SSM/Mamba 证据</h3>
+                <div class="tags"><span class="tag historical">经典知名论文</span></div><ul><li>摘要将 AlphaFold 3 描述为采用显著更新的扩散式架构，可联合预测蛋白质、核酸、小分子、离子和修饰残基构成的复合物结构，并报告相对多类专用工具的准确性提升。
+                    </li><li>候选元数据将其 primary_topic 标为 ssm_mamba，且其被标记为 well_known 与 historical_anchor；但标题和摘要未给出 Mamba、状态空间模型、选择性扫
+                    </li><li>这说明主题日报的最终筛选不能把元数据分类当作技术归属本身；该论文不进入今日 SSM 的实证比较或方法判断。
+                    </li></ul><div class="meta-line">引用 15294 · 创新度 6.15/10 · Nature</div>
+                <div class="read-links"><a href="https://doi.org/10.1038/s41586-024-07487-w" target="_blank" rel="noopener">Read ↗</a>
+                </div>
+                <div class="original-title">Accurate structure prediction of biomolecular interactions with AlphaFold 3</div>
+            </article></section>        <footer><span>Sources: arXiv · OpenAlex · Semantic Scholar · NeurIPS official proceedings. Oral/Spotlight labels
+                appear
+                only when officially verified.</span><span>Generated 2026-08-27 05:24 UTC</span></footer>
+    </main>
+</body>
+
+</html>
